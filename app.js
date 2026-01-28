@@ -5,34 +5,24 @@ import { fileURLToPath } from "url";
 import candidatoRoutes from "./src/routas/routascandidato.js";
 
 const app = express();
-
-// =======================
-// MIDDLEWARES
-// =======================
 app.use(cors({
-  origin: "*",
+  origin: ["http://localhost:5173", "http://localhost:8080"], // frontend dev e backend dev
   methods: ["GET", "POST", "PUT", "DELETE"],
-  allowedHeaders: ["Content-Type"]
 }));
-
 app.use(express.json());
 
-// =======================
-// ROTAS DA API (PRIMEIRO)
-// =======================
+// ROTAS DA API
 app.use("/candidatos", candidatoRoutes);
 
-// =======================
-// FRONTEND (DEPOIS)
-// =======================
+// FRONT (VITE BUILD)
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-// ⚠️ só serve o React se a pasta dist existir
+// arquivos estáticos
 app.use(express.static(path.join(__dirname, "dist")));
 
-// Qualquer rota que NÃO seja /candidatos → React
-app.get("*", (req, res) => {
+// catch-all correto (SPA)
+app.use((req, res) => {
   res.sendFile(path.join(__dirname, "dist", "index.html"));
 });
 

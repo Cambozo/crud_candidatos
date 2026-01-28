@@ -2,12 +2,11 @@ import dotenv from "dotenv";
 dotenv.config();
 import app from "./app.js";
 
-// Usa a porta do Railway (ou 3000 como fallback)
 const PORT = process.env.PORT || 3000;
 
-// Healthcheck simples obrigatório para Railway
-app.get("/", (req, res) => {
-  res.send("API rodando 🚀");
+// Healthcheck exclusivo
+app.get("/health", (req, res) => {
+  res.status(200).send("OK");
 });
 
 app.listen(PORT, () => {
