@@ -1,6 +1,6 @@
 import dotenv from "dotenv";
 dotenv.config();
-import app from "./App.js";
+import app from "./app.js";
 
 // Usa a porta do Railway (ou 3000 como fallback)
 const PORT = process.env.PORT || 3000;

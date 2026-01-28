@@ -2,7 +2,7 @@ import express from "express";
 import cors from "cors";
 import path from "path";
 import { fileURLToPath } from "url";
-import candidatoRoutes from "./src/Routas/Routas_Candidato.js";
+import candidatoRoutes from "./src/routas/routascandidato.js";
 
 const app = express();
 

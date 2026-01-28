@@ -4,7 +4,7 @@ import {
   buscarCanditado,
   ActualizarCandidato,
   EliminarCandidato
-} from "../Controllers/Controles_Candidatos.js.js";
+} from "../controllers/controlescandidatos.js";
 
 const router = express.Router();
 
